@@ -1,0 +1,94 @@
+.user-dropdown-menu {
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+  overflow: hidden !important;
+}
+
+.user-dropdown-menu .user-header {
+  background: linear-gradient(135deg, #006400 0%, #008000 100%);
+  padding: 20px;
+  color: white;
+}
+
+.user-dropdown-menu .user-header .user-name {
+  font-weight: 600;
+  margin: 0;
+  font-size: 16px;
+  color: white;
+}
+
+.user-dropdown-menu .user-header .user-role {
+  font-size: 12px;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.user-dropdown-menu .menu-section-title {
+  color: #6c757d;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 16px 20px 8px;
+  margin: 0;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eee;
+}
+
+.user-dropdown-menu .dropdown-item {
+  padding: 12px 20px;
+  color: #495057;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.user-dropdown-menu .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.user-dropdown-menu .dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #006400;
+}
+
+.user-dropdown-menu .dropdown-item i {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  color: #006400;
+}
+
+.user-dropdown-menu .dropdown-divider {
+  margin: 0;
+  border-color: rgba(0,0,0,0.05);
+}
+
+/* Logout button specific styling */
+.user-dropdown-menu .dropdown-item.logout {
+  color: #dc3545;
+}
+
+.user-dropdown-menu .dropdown-item.logout i {
+  color: #dc3545;
+}
+
+.user-dropdown-menu .dropdown-item.logout:hover {
+  background-color: #fff5f5;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .user-dropdown-menu {
+    position: fixed !important;
+    top: 70px !important;
+    right: 10px !important;
+    left: 10px !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+}

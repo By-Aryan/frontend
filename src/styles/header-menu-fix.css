@@ -1,0 +1,73 @@
+/* Header Menu City Counts CSS Fix */
+
+.ace-responsive-menu .dropitem {
+  position: relative;
+}
+
+.ace-responsive-menu .dropitem:hover .sub-menu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.ace-responsive-menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-width: 200px;
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.ace-responsive-menu .sub-menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ace-responsive-menu .sub-menu li a {
+  display: block;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.ace-responsive-menu .sub-menu li:last-child a {
+  border-bottom: none;
+}
+
+.ace-responsive-menu .sub-menu li a:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #0e8261;
+  transform: translateX(4px);
+}
+
+.ace-responsive-menu .dropitem .arrow::after {
+  content: "▼";
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+/* Ensure proper visibility and positioning */
+.ace-responsive-menu .dropitem {
+  position: relative;
+}
+
+.ace-responsive-menu .dropitem:hover .sub-menu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}

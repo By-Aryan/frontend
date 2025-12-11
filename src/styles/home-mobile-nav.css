@@ -1,0 +1,589 @@
+/* Enhanced Home Mobile Navigation with Glass Effect */
+.home-mobile-nav {
+  display: block !important;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1000;
+  text-align: left;
+  padding: 0 0.75rem;
+  width: 100%;
+}
+
+/* Premium glass effect for mobile header */
+.home-mobile-nav .mobile-dashboard-header {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 20px !important;
+  padding: 1rem 1.25rem !important;
+  margin-bottom: 1rem !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  width: 100%;
+  max-width: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glass gradient overlay for mobile header */
+.home-mobile-nav .mobile-dashboard-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Enhanced mobile header content */
+.home-mobile-nav .mobile-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 40px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced logo styling with glass effect */
+.home-mobile-nav .mobile-logo {
+  flex: 2;
+  text-align: center;
+  max-width: none;
+  padding: 0 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.home-mobile-nav .mobile-logo:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+.home-mobile-nav .mobile-logo .logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+/* Enhanced user info with premium glass effect */
+.home-mobile-nav .mobile-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  min-width: 0;
+  max-width: 160px;
+  background: rgba(15, 131, 99, 0.15) !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(15, 131, 99, 0.2) !important;
+  flex: 1;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 
+    0 4px 16px rgba(15, 131, 99, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.home-mobile-nav .mobile-user-info:hover {
+  background: rgba(15, 131, 99, 0.2) !important;
+  transform: scale(1.02);
+}
+
+/* Enhanced hamburger button with glass effect */
+.home-mobile-nav .dropbtn {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: var(--theme-text);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 12px !important;
+  font-size: 12px;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1001;
+  margin: 0;
+  flex-shrink: 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.home-mobile-nav .dropbtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.home-mobile-nav .dropbtn:hover::before {
+  left: 100%;
+}
+
+.home-mobile-nav .dropbtn:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    0 3px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+}
+
+/* Hide on desktop, show on mobile */
+@media (min-width: 992px) {
+  .home-mobile-nav {
+    display: none !important;
+  }
+}
+
+/* Show on mobile */
+@media (max-width: 991.98px) {
+  .home-mobile-nav {
+    display: block !important;
+  }
+  
+  /* Hide the desktop header on mobile */
+  .header-nav.nav-homepage-style {
+    display: none !important;
+  }
+}
+
+/* Premium glass dropdown menu */
+.home-mobile-nav .dropdown-menu.mobile-nav-menu {
+  position: absolute;
+  top: 100%;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+  z-index: 1050;
+  max-height: 70vh;
+  overflow-y: auto;
+  min-width: 280px;
+  max-width: 320px;
+  width: auto;
+  padding: 0.75rem 0;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  margin-top: 0.5rem;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  display: none;
+  animation: premiumSlideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes premiumSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.home-mobile-nav .dropdown-menu.mobile-nav-menu.show {
+  display: block !important;
+}
+
+/* Enhanced dropdown headers with glass effect */
+.home-mobile-nav .dropdown-header {
+  background: linear-gradient(135deg, rgba(15, 131, 99, 0.12) 0%, rgba(15, 131, 99, 0.06) 100%) !important;
+  border-radius: 10px !important;
+  margin: 0 0.75rem 0.375rem !important;
+  padding: 0.625rem 1rem !important;
+  font-weight: 700 !important;
+  font-size: 0.65rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: var(--theme-primary) !important;
+  border: 1px solid rgba(15, 131, 99, 0.15) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(15, 131, 99, 0.08);
+}
+
+/* Enhanced dropdown items with glass morphism */
+.home-mobile-nav .dropdown-item {
+  position: relative;
+  overflow: hidden;
+  padding: 0.75rem 1rem !important;
+  font-size: 14px !important;
+  color: #2d3748 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  margin: 0.15rem 0.75rem !important;
+  border-radius: 10px !important;
+  line-height: 1.3 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(15, 131, 99, 0.08) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.home-mobile-nav .dropdown-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(15, 131, 99, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.home-mobile-nav .dropdown-item:hover::before {
+  left: 100%;
+}
+
+.home-mobile-nav .dropdown-item:hover {
+  background: rgba(15, 131, 99, 0.12) !important;
+  color: var(--theme-primary) !important;
+  transform: translateX(6px) scale(1.02) !important;
+  box-shadow: 
+    0 6px 20px rgba(15, 131, 99, 0.2),
+    0 3px 12px rgba(15, 131, 99, 0.15) !important;
+  border-color: rgba(15, 131, 99, 0.2) !important;
+}
+
+.home-mobile-nav .dropdown-item.active {
+  background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%) !important;
+  color: white !important;
+  box-shadow: 
+    0 6px 20px rgba(15, 131, 99, 0.3),
+    0 3px 12px rgba(15, 131, 99, 0.2) !important;
+  font-weight: 600 !important;
+  border-color: var(--theme-primary-dark) !important;
+}
+
+.home-mobile-nav .dropdown-item.active:hover {
+  background: linear-gradient(135deg, var(--theme-primary-dark) 0%, #056b4f 100%) !important;
+  color: white !important;
+  transform: translateX(6px) scale(1.02) !important;
+  box-shadow: 
+    0 8px 25px rgba(15, 131, 99, 0.4),
+    0 4px 15px rgba(15, 131, 99, 0.25) !important;
+}
+
+/* Enhanced icons with glass effect */
+.home-mobile-nav .dropdown-item i {
+  width: 22px !important;
+  height: 22px !important;
+  text-align: center !important;
+  margin-right: 1rem !important;
+  font-size: 15px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  background: rgba(15, 131, 99, 0.15) !important;
+  border-radius: 6px !important;
+  color: var(--theme-primary) !important;
+  backdrop-filter: blur(5px);
+}
+
+.home-mobile-nav .dropdown-item:hover i {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: var(--theme-primary) !important;
+  transform: scale(1.1) !important;
+}
+
+.home-mobile-nav .dropdown-item.active i {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+/* Enhanced dividers */
+.home-mobile-nav .dropdown-divider {
+  margin: 0.75rem 1.5rem !important;
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(15, 131, 99, 0.2), transparent) !important;
+  opacity: 0.8 !important;
+}
+
+/* Better mobile dropdown positioning */
+.home-mobile-nav .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Improved search box styling */
+.home-mobile-nav .px-3.py-2 {
+  padding: 0.75rem !important;
+  margin: 0 !important;
+}
+
+.home-mobile-nav .mobile-search-box {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  padding: 6px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(15, 131, 99, 0.15);
+  margin-bottom: 0.5rem;
+}
+
+.home-mobile-nav .mobile-search-box input {
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(15, 131, 99, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  backdrop-filter: blur(5px);
+}
+
+.home-mobile-nav .mobile-search-box input:focus {
+  border-color: var(--theme-primary) !important;
+  box-shadow: 
+    0 0 0 3px rgba(15, 131, 99, 0.15),
+    0 4px 12px rgba(15, 131, 99, 0.1) !important;
+  outline: none;
+  background: rgba(255, 255, 255, 0.95) !important;
+  transform: scale(1.02);
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 576px) {
+  .home-mobile-nav {
+    padding: 0 0.25rem;
+  }
+  
+  .home-mobile-nav .mobile-dashboard-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .home-mobile-nav .mobile-header-content {
+    gap: 0.75rem;
+  }
+  
+  .home-mobile-nav .mobile-logo {
+    padding: 0 0.5rem;
+  }
+  
+  .home-mobile-nav .mobile-logo .logo-img {
+    height: 36px;
+    max-width: 160px;
+  }
+  
+  .home-mobile-nav .mobile-user-info {
+    max-width: 140px;
+    gap: 0.625rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .home-mobile-nav .user-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .home-mobile-nav .user-greeting {
+    font-size: 10px;
+  }
+  
+  .home-mobile-nav .user-role {
+    font-size: 8px;
+  }
+}
+
+/* Better mobile responsiveness */
+@media (max-width: 480px) {
+  .home-mobile-nav .dropdown-menu.mobile-nav-menu {
+    border-radius: 12px !important;
+    margin-top: 0.25rem;
+    max-height: 75vh;
+    min-width: 260px;
+    max-width: 90vw;
+    right: 0 !important;
+  }
+  
+  .home-mobile-nav .dropdown-item {
+    padding: 0.625rem 0.875rem !important;
+    font-size: 13px !important;
+    margin: 0.1rem 0.5rem !important;
+  }
+  
+  .home-mobile-nav .dropdown-header {
+    padding: 0.5rem 0.875rem !important;
+    font-size: 0.6rem !important;
+    margin: 0 0.5rem 0.25rem !important;
+  }
+  
+  .home-mobile-nav .dropdown-item i {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 14px !important;
+    margin-right: 0.75rem !important;
+  }
+}
+
+/* User avatar and details enhancement */
+.home-mobile-nav .user-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  flex-shrink: 0;
+  box-shadow: 
+    0 4px 12px rgba(15, 131, 99, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.home-mobile-nav .user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  flex: 1;
+}
+
+.home-mobile-nav .user-greeting {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.home-mobile-nav .user-role {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: capitalize;
+  line-height: 1.2;
+  white-space: nowrap;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 2px;
+  backdrop-filter: blur(5px);
+}
+
+/* Hamburger lines enhancement */
+.home-mobile-nav .hamburger-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 14px;
+}
+
+.home-mobile-nav .hamburger-lines .line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #2d3748;
+  margin: 1.5px 0;
+  transition: all 0.3s ease;
+  border-radius: 1px;
+}
+
+.home-mobile-nav .dropbtn:hover .hamburger-lines .line {
+  background-color: var(--theme-primary);
+}
+
+/* Active state animation for hamburger */
+.home-mobile-nav .dropbtn[aria-expanded="true"] .hamburger-lines .line {
+  background-color: var(--theme-primary);
+}
+
+.home-mobile-nav .dropbtn[aria-expanded="true"] .hamburger-lines .line1 {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.home-mobile-nav .dropbtn[aria-expanded="true"] .hamburger-lines .line2 {
+  opacity: 0;
+}
+
+.home-mobile-nav .dropbtn[aria-expanded="true"] .hamburger-lines .line3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Dropdown positioning fixes */
+.home-mobile-nav .dropdown-menu.mobile-nav-menu {
+  margin-top: 8px !important;
+  transform-origin: top right;
+  max-width: calc(100vw - 2rem);
+}
+
+/* Arrow indicator for dropdown */
+.home-mobile-nav .dropdown-menu.mobile-nav-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(255, 255, 255, 0.98);
+  filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Theme variables */
+:root {
+  --theme-primary: #0f8363;
+  --theme-primary-dark: #068662;
+  --theme-primary-light: #eafff9;
+  --theme-text: #181a20;
+  --theme-text-light: #6c757d;
+  --theme-bg: #ffffff;
+  --theme-border: #e9ecef;
+}

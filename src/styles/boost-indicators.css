@@ -1,0 +1,140 @@
+/* Boost Indicator Styles */
+.boosted-tag {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3) !important;
+  animation: boostPulse 2s infinite;
+  position: absolute !important;
+  top: 15px !important;
+  left: 15px !important;
+  right: auto !important;
+  z-index: 10 !important;
+  overflow: hidden;
+}
+
+.boosted-tag::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: boostShine 3s infinite;
+}
+
+.boosted-tag .fas.fa-rocket {
+  animation: rocketBounce 1.5s infinite;
+}
+
+@keyframes boostPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.5);
+  }
+}
+
+@keyframes boostShine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  50% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes rocketBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Boost priority indicators */
+.boost-priority-high {
+  border: 2px solid #ff6b35 !important;
+  box-shadow: 0 0 15px rgba(255, 107, 53, 0.4) !important;
+}
+
+.boost-priority-medium {
+  border: 2px solid #f7931e !important;
+  box-shadow: 0 0 10px rgba(247, 147, 30, 0.3) !important;
+}
+
+.boost-priority-low {
+  border: 2px solid #ffc107 !important;
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.2) !important;
+}
+
+/* Boost rotation indicator */
+.boost-rotation-new {
+  position: relative;
+}
+
+.boost-rotation-new::after {
+  content: 'NEW';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #28a745;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Enhanced listing card for boosted properties */
+.listing-style1.boosted-listing {
+  border: 2px solid #ff6b35;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.listing-style1.boosted-listing:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.25);
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .boosted-tag {
+    font-size: 10px !important;
+    padding: 4px 8px !important;
+  }
+  
+  .boosted-tag small {
+    font-size: 8px !important;
+  }
+  
+  .boost-analytics-mini {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .boosted-tag {
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.5) !important;
+  }
+  
+  .listing-style1.boosted-listing {
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.25);
+  }
+}

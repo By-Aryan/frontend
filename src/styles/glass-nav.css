@@ -1,0 +1,621 @@
+/* Enhanced Glass Navigation Effect */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 20px !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  margin: 12px 20px !important;
+  max-width: calc(100% - 40px) !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glass navigation gradient overlay */
+.glass-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Enhanced glass effect on scroll */
+.glass-nav.sticky {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* White text for navigation */
+.glass-nav .list-item,
+.glass-nav .ace-responsive-menu .list-item,
+.glass-nav a,
+.glass-nav span {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Navigation container centering */
+.glass-nav .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+}
+
+/* Glass dropdown menus */
+.glass-dropdown {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  overflow: hidden !important;
+}
+
+/* Enhanced Glass buttons */
+.glass-btn {
+  background: linear-gradient(135deg, rgba(15, 131, 99, 0.9) 0%, rgba(6, 134, 98, 0.9) 100%) !important;
+  border-radius: 14px !important;
+  box-shadow: 
+    0 6px 20px rgba(15, 131, 99, 0.3),
+    0 2px 8px rgba(15, 131, 99, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.glass-btn:hover::before {
+  left: 100%;
+}
+
+.glass-btn:hover {
+  background: linear-gradient(135deg, rgba(15, 131, 99, 1) 0%, rgba(6, 134, 98, 1) 100%) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 
+    0 8px 25px rgba(15, 131, 99, 0.4),
+    0 4px 12px rgba(15, 131, 99, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+}
+
+/* Enhanced Glass icon buttons */
+.glass-icon-btn {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-icon-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.glass-icon-btn:hover::before {
+  left: 100%;
+}
+
+.glass-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    0 3px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Enhanced dropdown styling with premium glass effect */
+.glass-nav .ace-responsive-menu .sub-menu {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 16px !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  overflow: hidden !important;
+  margin-top: 12px !important;
+  padding: 8px !important;
+  animation: dropdownSlide 0.3s ease-out;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glass-nav .ace-responsive-menu .sub-menu li a {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  padding: 14px 18px !important;
+  color: #2d3748 !important;
+  text-shadow: none !important;
+  border-radius: 10px !important;
+  margin: 2px 0 !important;
+  font-weight: 500 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-nav .ace-responsive-menu .sub-menu li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(15, 131, 99, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.glass-nav .ace-responsive-menu .sub-menu li a:hover::before {
+  left: 100%;
+}
+
+.glass-nav .ace-responsive-menu .sub-menu li a:hover {
+  background: rgba(15, 131, 99, 0.1) !important;
+  color: #0f8363 !important;
+  transform: translateX(6px) scale(1.02) !important;
+  box-shadow: 0 4px 12px rgba(15, 131, 99, 0.15) !important;
+}
+
+/* Logo styling */
+.glass-nav .logos img {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .glass-nav {
+    margin: 4px 8px !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* Additional white text styling */
+.glass-nav .ace-responsive-menu .list-item,
+.glass-nav .ace-responsive-menu .dropitem .title,
+.glass-nav .login-info,
+.glass-nav .login-info span,
+.glass-nav .login-info i {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Center the navigation properly */
+.glass-nav .container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.glass-nav .flex {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+/* Logo white filter */
+.glass-nav .header-logo.logo1 img {
+  filter: none !important; /* Keep white logo as is */
+}
+
+.glass-nav .header-logo.logo2 img {
+  filter: brightness(0) invert(1) !important; /* Make black logo white */
+}
+
+/* Ensure proper spacing */
+.glass-nav .logos {
+  margin-right: 40px !important;
+}
+
+/* Navigation menu items */
+.glass-nav .ace-responsive-menu ul li a {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Dropdown arrow */
+.glass-nav .ace-responsive-menu .dropitem .arrow::after {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Mobile responsive centering */
+@media (max-width: 768px) {
+  .glass-nav {
+    margin: 4px 8px !important;
+  }
+  
+  .glass-nav .container {
+    padding: 0 12px !important;
+  }
+}
+
+/* Comprehensive white text styling - catch all remaining elements */
+.glass-nav,
+.glass-nav *,
+.glass-nav .ace-responsive-menu,
+.glass-nav .ace-responsive-menu *,
+.glass-nav .main-menu,
+.glass-nav .main-menu *,
+.glass-nav .nav-homepage-style,
+.glass-nav .nav-homepage-style *,
+.glass-nav .header-nav,
+.glass-nav .header-nav * {
+  color: white !important;
+}
+
+/* Specific targeting for menu elements */
+.glass-nav .ace-responsive-menu .visible_list .list-item,
+.glass-nav .ace-responsive-menu .visible_list .list-item *,
+.glass-nav .ace-responsive-menu .dropitem,
+.glass-nav .ace-responsive-menu .dropitem *,
+.glass-nav .ace-responsive-menu .dropitem .title,
+.glass-nav .ace-responsive-menu .dropitem .title *,
+.glass-nav .ace-responsive-menu .dropitem .arrow,
+.glass-nav .ace-responsive-menu .dropitem .arrow *,
+.glass-nav .ace-responsive-menu .dropitem .arrow::after {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Target any remaining black text */
+.glass-nav [style*="color: black"],
+.glass-nav [style*="color:#000"],
+.glass-nav [style*="color: #000000"],
+.glass-nav .text-black {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Override any inline styles */
+.glass-nav * {
+  color: white !important;
+}
+
+/* Exclude dropdown menu items (they should remain dark) */
+.glass-nav .ace-responsive-menu .sub-menu,
+.glass-nav .ace-responsive-menu .sub-menu * {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.glass-nav .ace-responsive-menu .sub-menu li a:hover {
+  color: #0e8261 !important;
+}
+
+/* Force white for any stubborn elements */
+.glass-nav .container *,
+.glass-nav .posr *,
+.glass-nav .menu_bdrt1 *,
+.glass-nav .flex *,
+.glass-nav .col-auto *,
+.glass-nav .d-flex *,
+.glass-nav .align-items-center *,
+.glass-nav .justify-content-between * {
+  color: white !important;
+}
+
+/* Exclude buttons and specific elements that should keep their own colors */
+.glass-nav .glass-btn,
+.glass-nav .glass-btn *,
+.glass-nav .glass-icon-btn .far,
+.glass-nav .glass-icon-btn .fas {
+  color: white !important;
+}
+
+/* Override MainMenu component black text classes */
+.glass-nav .ace-responsive-menu .list-item,
+.glass-nav .ace-responsive-menu .visible_list .list-item,
+.glass-nav .ace-responsive-menu .visible_list .list-item .title,
+.glass-nav .ace-responsive-menu .visible_list .list-item .title.menuActive {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Target Tailwind's text-black utility classes specifically */
+.glass-nav .text-black {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Override any remaining color utilities */
+.glass-nav [class*="text-black"] {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Specific targeting for menu titles */
+.glass-nav .ace-responsive-menu .title,
+.glass-nav .ace-responsive-menu .title.menuActive,
+.glass-nav .ace-responsive-menu .dropitem .title,
+.glass-nav .ace-responsive-menu .dropitem .title.menuActive {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Override any navbar specific styles */
+.glass-nav.nav-homepage-style .ace-responsive-menu .list-item,
+.glass-nav.nav-homepage-style .ace-responsive-menu .list-item *,
+.glass-nav.main-menu .ace-responsive-menu .list-item,
+.glass-nav.main-menu .ace-responsive-menu .list-item * {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Override MainMenu inline styles that force black color */
+.glass-nav .ace-responsive-menu .visible_list .list-item[style*="color: #000000"],
+.glass-nav .ace-responsive-menu .visible_list .list-item[style*="color:#000000"],
+.glass-nav .ace-responsive-menu .visible_list .list-item[style*="color: rgb(0, 0, 0)"],
+.glass-nav .ace-responsive-menu .list-item[style*="color: #000000"],
+.glass-nav .ace-responsive-menu .list-item[style*="color:#000000"],
+.glass-nav .ace-responsive-menu .list-item[style*="color: rgb(0, 0, 0)"] {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Force override all inline color styles in glass nav */
+.glass-nav [style*="color:"],
+.glass-nav [style*="color "] {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Exclude dropdown items from white text override */
+.glass-nav .sub-menu [style*="color:"],
+.glass-nav .sub-menu [style*="color "] {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.glass-nav .sub-menu li a:hover {
+  color: #0e8261 !important;
+}
+
+/* Ultimate override for any remaining black text */
+.glass-nav * {
+  color: white !important;
+}
+
+/* Re-exclude elements that should not be white */
+.glass-nav .sub-menu,
+.glass-nav .sub-menu *,
+.glass-nav .glass-btn,
+.glass-nav .glass-btn * {
+  color: inherit !important;
+}
+
+.glass-nav .sub-menu * {
+  color: #333 !important;
+}
+
+.glass-nav .glass-btn,
+.glass-nav .glass-btn * {
+  color: white !important;
+}/* Prem
+ium Glass Navigation Enhancements */
+
+/* Navigation container with better glass effect */
+.glass-nav .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced logo styling */
+.glass-nav .logos {
+  position: relative;
+  z-index: 2;
+}
+
+.glass-nav .logos img {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.glass-nav .logos:hover img {
+  transform: scale(1.05);
+}
+
+/* Menu items with glass effect */
+.glass-nav .ace-responsive-menu .visible_list {
+  position: relative;
+}
+
+.glass-nav .ace-responsive-menu .visible_list .list-item {
+  padding: 12px 18px !important;
+  border-radius: 10px !important;
+  margin: 0 4px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-nav .ace-responsive-menu .visible_list .list-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glass-nav .ace-responsive-menu .visible_list .list-item:hover::before {
+  opacity: 1;
+}
+
+.glass-nav .ace-responsive-menu .visible_list .list-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Active menu item styling */
+.glass-nav .ace-responsive-menu .visible_list .list-item.menuActive,
+.glass-nav .ace-responsive-menu .visible_list .list-item .title.menuActive {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Dropdown arrow styling */
+.glass-nav .ace-responsive-menu .dropitem .arrow {
+  transition: all 0.3s ease;
+}
+
+.glass-nav .ace-responsive-menu .dropitem:hover .arrow {
+  transform: rotate(180deg);
+}
+
+/* User info section enhancement */
+.glass-nav .col-auto:last-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.glass-nav .font-semibold {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive enhancements */
+@media (max-width: 1200px) {
+  .glass-nav {
+    margin: 8px 16px !important;
+    max-width: calc(100% - 32px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .glass-nav {
+    margin: 4px 8px !important;
+    border-radius: 16px !important;
+    max-width: calc(100% - 16px) !important;
+  }
+  
+  .glass-nav .container {
+    padding: 0 12px !important;
+  }
+  
+  .glass-nav .logos {
+    margin-right: 20px !important;
+  }
+}
+
+/* Smooth transitions for all glass elements */
+.glass-nav * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced glass effect on window resize */
+@media (min-width: 1400px) {
+  .glass-nav {
+    max-width: 1360px !important;
+    margin: 12px auto !important;
+  }
+}
+
+/* Premium glass glow effect */
+.glass-nav {
+  position: relative;
+}
+
+.glass-nav::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.05), 
+    rgba(255, 255, 255, 0.1)
+  );
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glass-nav:hover::after {
+  opacity: 1;
+}
+
+/* Text enhancement for better readability */
+.glass-nav * {
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+}
+
+.glass-nav .ace-responsive-menu .visible_list .list-item,
+.glass-nav .ace-responsive-menu .dropitem .title {
+  font-weight: 600 !important;
+}

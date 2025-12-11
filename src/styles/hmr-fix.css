@@ -1,0 +1,36 @@
+/* CSS Module Hot Reload Fix */
+/* This file helps prevent CSS module HMR conflicts */
+
+/* Reset any potential conflicting styles that might cause DOM manipulation issues */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure CSS modules don't interfere with HMR */
+:global(.__next) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix for development mode CSS hot reloading */
+:global([data-next-hide-fouc]) {
+  display: none;
+}
+
+:global([data-next-hide-fouc].next-error-h1) {
+  display: block;
+}
+
+/* Ensure proper CSS module class handling */
+:global(.css-module-wrapper) {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Development mode CSS stability */
+@media (max-width: 0px) {
+  :global(body) {
+    /* This forces CSS to be stable during HMR */
+    transform: translateZ(0);
+  }
+}

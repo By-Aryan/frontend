@@ -1,0 +1,101 @@
+/* Dropdown Fix Styles - To resolve dropdown overflow issues */
+
+/* Ensure all dropdown containers have proper positioning and overflow */
+.dropdown,
+.dropdown-toggle,
+.user_setting {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Fix for all dropdown menus to appear correctly */
+.dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: auto !important;
+  z-index: 9999 !important;
+  overflow: visible !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: none !important;
+  min-width: 200px !important;
+  max-width: 400px !important;
+  background: #fff !important;
+  border: 1px solid rgba(0,0,0,.15) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  padding: 8px 0 !important;
+}
+
+/* Show state for dropdown menu */
+.dropdown-menu.show {
+  display: block !important;
+  position: absolute !important;
+  z-index: 9999 !important;
+  overflow: visible !important;
+}
+
+/* Right-aligned dropdown menus */
+.dropdown-menu-end,
+.user_setting .dropdown-menu {
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Prevent parent containers from clipping dropdowns */
+.header-nav,
+.dashboard_header,
+.navbar,
+.container,
+.container-fluid,
+.dashboard_navigationbar,
+nav {
+  overflow: visible !important;
+}
+
+/* Fix for mobile responsiveness */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    right: 20px !important;
+    width: auto !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* Specific fixes for dashboard navigation */
+.dashboard_navigationbar .dropdown-menu {
+  background-color: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07) !important;
+  min-width: 250px !important;
+}
+
+/* Animation fixes */
+.dropdown-menu {
+  transition: all 0.3s ease !important;
+}
+
+.dropdown-menu:not(.show) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-10px) !important;
+}
+
+/* Force proper z-index stacking */
+.dropdown-menu {
+  z-index: 99999 !important;
+}
+
+/* Ensure dropdown items are clickable */
+.dropdown-item {
+  position: relative !important;
+  z-index: 1 !important;
+  pointer-events: auto !important;
+}

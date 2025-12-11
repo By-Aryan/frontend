@@ -1,0 +1,112 @@
+/* Additional scrolling fixes for specific components */
+
+/* Property listing pages */
+.property-listing-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+
+/* Data tables */
+.data-table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 70vh;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+/* Form containers */
+.form-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 150px);
+  padding: 20px;
+}
+
+/* Dashboard cards and widgets */
+.dashboard-widget {
+  overflow: hidden;
+}
+
+.dashboard-widget .widget-content {
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+/* Property details pages */
+.property-details-content {
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+/* Search and filter sections */
+.search-filter-container {
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+/* Mobile responsive scrolling */
+@media (max-width: 768px) {
+  .dashboard__content {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table-responsive {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    max-height: 60vh;
+  }
+  
+  .property-grid, .property-list {
+    overflow-y: auto !important;
+    max-height: 70vh;
+  }
+  
+  .modal-content {
+    overflow-y: auto !important;
+    max-height: 85vh;
+  }
+}
+
+/* Prevent horizontal overflow on small screens */
+@media (max-width: 576px) {
+  .dashboard__main {
+    overflow-x: hidden !important;
+  }
+  
+  .dashboard__content {
+    padding: 10px !important;
+    overflow-x: hidden !important;
+  }
+}
+
+/* Smooth scrolling for navigation */
+.dashboard__sidebar a {
+  scroll-behavior: smooth;
+}
+
+/* Custom scroll behavior for specific components */
+.scrollable-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #0e8261 #f1f1f1;
+}
+
+.scrollable-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background: #0e8261;
+  border-radius: 4px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+  background: #0d6b4f;
+}

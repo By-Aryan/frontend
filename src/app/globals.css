@@ -1,0 +1,633 @@
+@import "tailwindcss";
+
+/* Theme variables */
+:root {
+  --color-headings: #181a20;
+  --color-text: #2b2f36;
+  --color-primary: #0f8363;
+  --color-primary-600: #0d6b4f;
+  --color-primary-700: #0a5a42;
+  --color-primary-50: #e8f5f1;
+  --color-secondary: #068662;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f7f7f7;
+  --color-success: #16a34a;
+  --color-info: #06b6d4;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+}
+
+/* Custom scrollbar styling for full page */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-600);
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) #f1f1f1;
+}
+
+/* Enable full page scrolling */
+html {
+  scroll-behavior: smooth !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+}
+
+body {
+  scroll-behavior: smooth !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main wrapper should allow full page scrolling */
+.wrapper {
+  overflow-x: hidden;
+  overflow-y: visible;
+  min-height: 100vh;
+  height: auto;
+}
+
+/* Remove height restrictions from dashboard components */
+.dashboard_content_wrapper {
+  overflow: visible;
+  height: auto;
+  min-height: 100vh;
+}
+
+.dashboard.dashboard_wrapper {
+  overflow: visible;
+  height: auto;
+}
+
+.dashboard__main {
+  overflow: visible;
+  height: auto;
+}
+
+.dashboard__content {
+  overflow: visible;
+  height: auto;
+  min-height: calc(100vh - 80px);
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Bootstrap theme overrides to match site palette */
+.btn-primary {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-primary-600) !important;
+  border-color: var(--color-primary-600) !important;
+}
+.btn-outline-primary {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background-color: transparent !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+.text-primary { color: var(--color-primary) !important; }
+.bg-primary { background-color: var(--color-primary) !important; }
+.border-primary { border-color: var(--color-primary) !important; }
+
+.badge-primary {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+.link-primary { color: var(--color-primary) !important; }
+.link-primary:hover { color: var(--color-primary-600) !important; }
+
+/* Table and card accents */
+.table-light { background-color: var(--color-bg-alt) !important; }
+.table-hover tbody tr:hover { background-color: #f1f3f4 !important; }
+
+.card,
+.ps-widget,
+.default-box-shadow2 {
+  border-color: var(--color-border) !important;
+}
+
+/* Form focus styles */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--color-primary) 25%, transparent) !important;
+}
+
+/* Pill badges for project status */
+.badge-warning { background-color: var(--color-warning) !important; }
+.badge-info { background-color: var(--color-info) !important; }
+.badge-success { background-color: var(--color-success) !important; }
+.badge-secondary { background-color: #adb5bd !important; }
+.badge-danger { background-color: var(--color-danger) !important; }
+
+@keyframes skeletonPulse {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton-loader {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+/* Dashboard sidebar fixes */
+.dashboard__sidebar {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+}
+
+/* Override the original sidebar padding */
+.dashboard__sidebar {
+  padding: 15px !important;
+}
+
+/* Make sidebar list take full width */
+.dashboard_sidebar_list {
+  width: 100%;
+}
+
+/* Fix spacing between sidebar sections */
+.dashboard_sidebar_list > div {
+  margin-bottom: 8px;
+}
+
+/* Fix sidebar section titles */
+.dashboard_sidebar_list .fz15.fw400.ff-heading {
+  margin-bottom: 6px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+/* Fix sidebar list items */
+.dashboard_sidebar_list .sidebar_list_item {
+  margin-bottom: 2px;
+}
+
+/* Make sidebar icons smaller and align with text */
+.dashboard_sidebar_list .sidebar_list_item a {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+.dashboard_sidebar_list .sidebar_list_item a i {
+  font-size: 14px;
+  margin-right: 8px !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Fix dashboard content padding */
+.dashboard__content {
+  padding: 1.5rem 30px 20px !important;
+}
+
+/* Fix dashboard title area padding and spacing */
+.dashboard_title_area {
+  margin-bottom: 20px !important;
+}
+
+.dashboard__content .row.align-items-center.pb40 {
+  padding-bottom: 20px !important;
+}
+
+.dashboard__content .row.pb40 {
+  padding-bottom: 20px !important;
+}
+
+/* End dashboard sidebar fixes */
+
+.header-logo img {
+  width: auto !important;
+}
+
+.logos {
+  min-width: 140px !important;
+}
+
+.dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 2147483647 !important;
+  position: absolute !important;
+  overflow: visible !important;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  z-index: 2147483647 !important;
+  overflow: visible !important;
+}
+
+/* Ensure dropdown containers have proper overflow */
+.dropdown {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Fix for user dropdown menu specifically */
+.user_setting .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  right: 10px !important;
+  left: auto !important;
+  min-width: 250px !important;
+  overflow: visible !important;
+  z-index: 99999999 !important;
+}
+
+.header-nav .d-flex.align-items-center {
+  height: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .header-nav.light-header .row {
+    min-height: 70px !important;
+  }
+
+  .dashboard_header_logo img {
+    height: 38px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .header-nav.light-header .row {
+    min-height: 60px !important;
+  }
+
+  .dashboard_header_logo img {
+    height: 32px !important;
+  }
+}
+
+/* React Select dropdown z-index fix */
+.select__menu {
+  z-index: 99999998 !important;
+}
+
+.select__menu-portal {
+  z-index: 99999998 !important;
+}
+
+/* Custom dropdown positioning fixes */
+.position-relative .dropdown-menu {
+  top: 100% !important;
+  left: 0 !important;
+  right: auto !important;
+}
+
+/* Location dropdown specific styling */
+.search-input .position-absolute {
+  z-index: 9999 !important;
+}
+
+/* Ensure dropdown containers have proper positioning */
+.dropdown {
+  position: relative !important;
+}
+
+/* Hero Content specific z-index fixes */
+.advance-search-tab {
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+.advance-search-tab .dropdown-container {
+  position: relative !important;
+  z-index: 1010 !important;
+  pointer-events: auto !important;
+}
+
+.advance-search-tab .dropdown-container button {
+  position: relative !important;
+  z-index: 1010 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.advance-search-tab .dropdown-menu {
+  position: absolute !important;
+  z-index: 10000 !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure all interactive elements in the search are clickable */
+.advance-search-tab * {
+  pointer-events: auto !important;
+}
+
+/* Prevent container overflow that clips dropdowns */
+.header-nav,
+.dashboard_header,
+.navbar,
+.container,
+.container-fluid {
+  overflow: visible !important;
+}
+
+/* Specific fix for dashboard navigation */
+.dashboard_navigationbar {
+  overflow: visible !important;
+}
+
+/* Fixed dropdown styles to appear above everything */
+[data-dropdown-menu] {
+  position: fixed !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+}
+
+/* Override any section that might be hiding dropdowns */
+body > * {
+  z-index: 1 !important;
+}
+
+.advance-search-tab,
+[data-dropdown-menu] {
+  z-index: 999998 !important;
+}
+
+/* Property Type Modal - highest priority */
+.modal-overlay {
+  z-index: 999999 !important;
+  position: fixed !important;
+}
+
+.modal-content {
+  z-index: 999999 !important;
+  position: relative !important;
+}
+
+/* Dropdown menus - very high priority */
+[data-dropdown-menu] {
+  z-index: 999998 !important;
+  position: fixed !important;
+  pointer-events: auto !important;
+}
+
+/* -------------------------------------------------- */
+/* Layout alignment & centering fixes                 */
+/* -------------------------------------------------- */
+/* Ensure consistent sizing model and prevent overflow quirks */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Dashboard content centering and constraints */
+.dashboard__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 30px;
+  width: 100%;
+}
+
+/* Property page specific styling */
+.dashboard__content.property-page {
+  max-width: 1400px;
+  padding: 20px 30px;
+}
+
+/* Ensure form containers are properly aligned */
+.dashboard__content .ps-widget,
+.dashboard__content .card,
+.dashboard__content .default-box-shadow2 {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Row and column alignment fixes */
+.dashboard__content .row {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.dashboard__content .col-xl-12,
+.dashboard__content .col-lg-12 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Container alignment within dashboard */
+.dashboard__content > .container,
+.dashboard__content > .container-fluid {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Form spacing improvements */
+.dashboard__content .mb20 {
+  margin-bottom: 20px;
+}
+
+.dashboard__content .mb30 {
+  margin-bottom: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .dashboard__content {
+    max-width: 100%;
+    padding: 20px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard__content {
+    padding: 15px 20px;
+  }
+  
+  .dashboard__content.property-page {
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard__content {
+    padding: 15px;
+  }
+}
+
+/* -------------------------------------------------- */
+/* Enhanced Theme Color Utilities                     */
+/* -------------------------------------------------- */
+
+/* Primary color variations */
+.text-primary-50 { color: var(--color-primary-50) !important; }
+.text-primary-600 { color: var(--color-primary-600) !important; }
+.text-primary-700 { color: var(--color-primary-700) !important; }
+.bg-primary-50 { background-color: var(--color-primary-50) !important; }
+.bg-primary-600 { background-color: var(--color-primary-600) !important; }
+.bg-primary-700 { background-color: var(--color-primary-700) !important; }
+.border-primary-50 { border-color: var(--color-primary-50) !important; }
+.border-primary-600 { border-color: var(--color-primary-600) !important; }
+.border-primary-700 { border-color: var(--color-primary-700) !important; }
+
+/* State colors */
+.text-success { color: var(--color-success) !important; }
+.text-info { color: var(--color-info) !important; }
+.text-warning { color: var(--color-warning) !important; }
+.text-danger { color: var(--color-danger) !important; }
+.text-muted { color: var(--color-muted) !important; }
+
+.bg-success { background-color: var(--color-success) !important; }
+.bg-info { background-color: var(--color-info) !important; }
+.bg-warning { background-color: var(--color-warning) !important; }
+.bg-danger { background-color: var(--color-danger) !important; }
+
+.border-success { border-color: var(--color-success) !important; }
+.border-info { border-color: var(--color-info) !important; }
+.border-warning { border-color: var(--color-warning) !important; }
+.border-danger { border-color: var(--color-danger) !important; }
+
+/* Themed buttons */
+.btn-theme-primary {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+.btn-theme-primary:hover,
+.btn-theme-primary:focus {
+  background-color: var(--color-primary-600) !important;
+  border-color: var(--color-primary-600) !important;
+  color: #ffffff !important;
+}
+
+.btn-theme-outline-primary {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  background-color: transparent !important;
+}
+.btn-theme-outline-primary:hover,
+.btn-theme-outline-primary:focus {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+
+.btn-theme-success {
+  background-color: var(--color-success) !important;
+  border-color: var(--color-success) !important;
+  color: #ffffff !important;
+}
+.btn-theme-success:hover,
+.btn-theme-success:focus {
+  background-color: color-mix(in srgb, var(--color-success) 80%, #000000) !important;
+  border-color: color-mix(in srgb, var(--color-success) 80%, #000000) !important;
+}
+
+.btn-theme-warning {
+  background-color: var(--color-warning) !important;
+  border-color: var(--color-warning) !important;
+  color: #ffffff !important;
+}
+.btn-theme-warning:hover,
+.btn-theme-warning:focus {
+  background-color: color-mix(in srgb, var(--color-warning) 80%, #000000) !important;
+  border-color: color-mix(in srgb, var(--color-warning) 80%, #000000) !important;
+}
+
+.btn-theme-danger {
+  background-color: var(--color-danger) !important;
+  border-color: var(--color-danger) !important;
+  color: #ffffff !important;
+}
+.btn-theme-danger:hover,
+.btn-theme-danger:focus {
+  background-color: color-mix(in srgb, var(--color-danger) 80%, #000000) !important;
+  border-color: color-mix(in srgb, var(--color-danger) 80%, #000000) !important;
+}
+
+/* Gradients */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-700) 100%) !important;
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, var(--color-success) 0%, color-mix(in srgb, var(--color-success) 70%, #000000) 100%) !important;
+}
+
+.bg-gradient-info {
+  background: linear-gradient(135deg, var(--color-info) 0%, color-mix(in srgb, var(--color-info) 70%, #000000) 100%) !important;
+}
+
+/* Theme-aware hover states */
+.hover-primary:hover {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+
+.hover-primary-600:hover {
+  background-color: var(--color-primary-600) !important;
+  color: #ffffff !important;
+}
+
+/* Focus states */
+.focus-primary:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--color-primary) 25%, transparent) !important;
+}
+
+/* Text selection theme */
+::selection {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+}

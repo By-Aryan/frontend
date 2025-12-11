@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://zerobroker.ae
+
+# Sitemaps
+Sitemap: https://zerobroker.ae/sitemap.xml

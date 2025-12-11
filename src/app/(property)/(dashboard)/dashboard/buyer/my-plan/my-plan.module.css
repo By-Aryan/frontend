@@ -1,0 +1,103 @@
+.plan-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+  color: #666;
+}
+
+.value {
+  font-weight: 500;
+  color: #333;
+}
+
+.nav-tabs {
+  border-bottom: 2px solid #e9ecef;
+  background: white;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 20px 0;
+}
+
+.nav-link {
+  color: #6c757d;
+  border: none;
+  padding: 12px 20px;
+  margin-right: 10px;
+  border-radius: 8px 8px 0 0;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+  background-color: rgba(15, 131, 99, 0.1);
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+  background-color: white;
+  border-bottom: 2px solid var(--color-primary);
+  font-weight: 600;
+}
+
+.plan-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(15, 131, 99, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.progress {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.plan-card {
+  transition: transform 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.plan-name {
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.plan-price {
+  margin-bottom: 1.5rem;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}

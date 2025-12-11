@@ -1,0 +1,256 @@
+/* Dashboard custom styles - Full page scrolling */
+
+/* Make the dashboard content wrapper allow full page scroll */
+.dashboard_content_wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  height: auto;
+}
+
+.dashboard.dashboard_wrapper {
+  height: auto;
+  display: flex;
+  flex-grow: 1;
+  overflow: visible;
+}
+
+.dashboard__main {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: visible;
+  width: 100%;
+  max-width: 100%;
+}
+
+.dashboard__content {
+  min-height: calc(100vh - 80px);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  height: auto;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Property page specific styles */
+.dashboard__content.property-page {
+  max-width: 1400px;
+  padding: 20px 30px;
+}
+
+/* Form container alignment fixes */
+.dashboard__content .ps-widget {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.dashboard__content .row {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.dashboard__content .col-xl-12 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Dashboard header and menu styles */
+.main-menu-after-sidebar {
+  padding-left: 15px;
+}
+
+.main-menu-after-sidebar .ace-responsive-menu {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+/* Property form specific improvements */
+.ps-widget.p30 {
+  padding: 30px !important;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.card-body {
+  padding: 25px;
+}
+
+/* Form layout improvements */
+.dashboard__content .form-control,
+.dashboard__content .form-select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.dashboard__content .form-control:focus,
+.dashboard__content .form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(15, 131, 99, 0.1);
+  outline: none;
+}
+
+/* Label styling */
+.dashboard__content label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Button improvements */
+.btn-thm {
+  transition: all 0.3s ease;
+}
+
+.btn-thm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(7, 196, 108, 0.4) !important;
+}
+
+/* Radio button styling */
+.form-check-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .dashboard__content.property-page {
+    padding: 15px;
+  }
+  
+  .ps-widget.p30 {
+    padding: 20px !important;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+}
+
+/* Make statistics cards consistent in size */
+.statistics_funfact {
+  height: 180px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.statistics_funfact:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px rgba(24, 26, 32, 0.1);
+}
+
+/* Delisting feature styles */
+.delist-card {
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.delist-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.delist-status-badge {
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+.delist-waiting-indicator {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  border: 1px solid #ffc107;
+  color: #856404;
+}
+
+.delist-action-btn {
+  min-width: 80px;
+  transition: all 0.2s ease;
+}
+
+.delist-action-btn:hover {
+  transform: translateY(-1px);
+}
+
+.delist-modal {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.delist-notification-item {
+  border-left: 4px solid #0e8261;
+  transition: all 0.3s ease;
+}
+
+.delist-notification-item:hover {
+  border-left-color: #0a5a42;
+  background-color: #f8f9fa !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199px) {
+  .statistics_funfact {
+    height: 160px !important;
+  }
+
+  .main-menu-after-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .statistics_funfact {
+    height: 150px !important;
+  }
+
+  .statistics_funfact .title {
+    font-size: 28px;
+    line-height: 40px;
+  }
+}
+
+/* Fix row spacing */
+.dashboard__content .row {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
