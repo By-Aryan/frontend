@@ -1,6 +1,6 @@
 const pageRoutes = {
   home: "/",
-  propertys: "/propertys",
+  propertys: "/all-properties",
   propertyDetails: "/property-details",
   buy: {
     properties: "/for-sale/properties/uae?purpose=buy",
