@@ -1,11 +1,11 @@
 
 import { useQuery } from "@tanstack/react-query";
-import api from "@/axios/axios.interceptor";
+import smartApi from "@/axios/dualBackendApi";
 
 const fetchProperty = async ({ queryKey }) => {
     const [, url] = queryKey; // Extract URL from queryKey
     try {
-      const response = await api.get(url);
+      const response = await smartApi.get(url);
       return response.data;
     } catch (error) {
       throw new Error(error.response?.data?.message || "Failed to fetch data");

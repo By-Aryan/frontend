@@ -1,16 +1,30 @@
 /**
- * Centralized API Configuration
+ * Centralized API Configuration - DUAL BACKEND SETUP
  *
  * This file provides a single source of truth for all API-related configuration.
  * All components should import from this file instead of hardcoding URLs.
+ *
+ * ARCHITECTURE:
+ * - Server 1 (Port 5001): User & Property Management
+ * - Server 2 (Port 5002): Payments, Admin & Media
  */
 
 export const API_CONFIG = {
-  // Base API URL for all API calls
-  BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5001/api/v1',
+  // ============================================
+  // DUAL BACKEND URLS
+  // ============================================
 
-  // Backend URL for direct backend calls (without /api/v1)
-  BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5001',
+  // Server 1 - User & Property Management
+  SERVER1_URL: process.env.NEXT_PUBLIC_SERVER1_URL || 'http://localhost:5001',
+  SERVER1_API_URL: process.env.NEXT_PUBLIC_API_SERVER1_URL || 'http://localhost:5001/api/v1',
+
+  // Server 2 - Payments, Admin & Media
+  SERVER2_URL: process.env.NEXT_PUBLIC_SERVER2_URL || 'http://localhost:5002',
+  SERVER2_API_URL: process.env.NEXT_PUBLIC_API_SERVER2_URL || 'http://localhost:5002/api/v1',
+
+  // Legacy URLs (for backward compatibility)
+  BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_SERVER1_URL || 'http://localhost:5001/api/v1',
+  BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_SERVER1_URL || 'http://localhost:5001',
 
   // Frontend base URL
   SITE_URL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
@@ -21,6 +35,71 @@ export const API_CONFIG = {
   // Retry configuration
   RETRY_ATTEMPTS: 3,
   RETRY_DELAY: 1000,
+};
+
+/**
+ * API ROUTING - Determines which backend server to use
+ *
+ * Server 2 handles:
+ * - /api/banners, /api/offers, /api/ads
+ * - /api/v1/documents
+ * - /api/v1/plans, /api/v1/subscription, /api/v1/BuyersPlan
+ * - /api/v1/payments, /api/v1/webhooks
+ * - /api/v1/admin (property operations)
+ * - /api/v1/projects, /api/v1/admin/projects
+ * - /api/v1/enhanced-boost
+ * - /api/v1/driver
+ * - File uploads
+ *
+ * Server 1 handles everything else (User & Property Management)
+ */
+const SERVER2_ENDPOINTS = [
+  '/api/banners',
+  '/api/offers',
+  '/api/ads',
+  '/api/v1/documents',
+  '/api/v1/plans',
+  '/api/v1/plan',
+  '/api/v1/subscription',
+  '/api/v1/payments',
+  '/api/v1/webhooks',
+  '/api/v1/BuyersPlan',
+  '/api/v1/admin/properties',
+  '/api/v1/admin/property',
+  '/api/v1/projects',
+  '/api/v1/admin/projects',
+  '/api/v1/enhanced-boost',
+  '/api/v1/driver',
+  '/api/v1/upload',
+];
+
+/**
+ * Determine which backend server to use for a given endpoint
+ * @param {string} endpoint - The API endpoint path
+ * @returns {Object} Object with baseURL and fullURL
+ */
+export const getBackendForEndpoint = (endpoint) => {
+  // Normalize endpoint
+  const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+
+  // Check if endpoint should go to Server 2
+  const useServer2 = SERVER2_ENDPOINTS.some(server2Endpoint =>
+    normalizedEndpoint.startsWith(server2Endpoint)
+  );
+
+  if (useServer2) {
+    return {
+      baseURL: API_CONFIG.SERVER2_API_URL,
+      backendURL: API_CONFIG.SERVER2_URL,
+      server: 'Server 2 (Payments, Admin & Media)'
+    };
+  }
+
+  return {
+    baseURL: API_CONFIG.SERVER1_API_URL,
+    backendURL: API_CONFIG.SERVER1_URL,
+    server: 'Server 1 (User & Property Management)'
+  };
 };
 
 /**
@@ -117,20 +196,30 @@ export const API_ENDPOINTS = {
 };
 
 /**
- * Build full API URL from endpoint
+ * Build full API URL from endpoint (with automatic backend routing)
  * @param {string} endpoint - The API endpoint path
  * @returns {string} Full URL
  */
 export const buildApiUrl = (endpoint) => {
-  return `${API_CONFIG.BASE_URL}${endpoint}`;
+  const backend = getBackendForEndpoint(endpoint);
+
+  // If endpoint already includes /api/v1, use backendURL + endpoint
+  if (endpoint.includes('/api/v1') || endpoint.includes('/api/banners') || endpoint.includes('/api/offers') || endpoint.includes('/api/ads')) {
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    return `${backend.backendURL}${cleanEndpoint}`;
+  }
+
+  // Otherwise, use baseURL (which includes /api/v1) + endpoint
+  return `${backend.baseURL}${endpoint}`;
 };
 
 /**
  * Build full backend URL (for images, direct backend calls)
  * @param {string} path - The path (e.g., "/uploads/ads/image.jpg")
+ * @param {string} preferredServer - Optional: 'server1' or 'server2' to force a specific backend
  * @returns {string} Full URL
  */
-export const buildBackendUrl = (path) => {
+export const buildBackendUrl = (path, preferredServer = null) => {
   // If path already includes http, return as-is
   if (path && (path.startsWith('http://') || path.startsWith('https://'))) {
     return path;
@@ -138,7 +227,20 @@ export const buildBackendUrl = (path) => {
 
   // Ensure path starts with /
   const cleanPath = path && path.startsWith('/') ? path : `/${path}`;
-  return `${API_CONFIG.BACKEND_URL}${cleanPath}`;
+
+  // Determine backend based on path or preferred server
+  let backendURL;
+  if (preferredServer === 'server2') {
+    backendURL = API_CONFIG.SERVER2_URL;
+  } else if (preferredServer === 'server1') {
+    backendURL = API_CONFIG.SERVER1_URL;
+  } else {
+    // Auto-detect based on path
+    const backend = getBackendForEndpoint(cleanPath);
+    backendURL = backend.backendURL;
+  }
+
+  return `${backendURL}${cleanPath}`;
 };
 
 /**

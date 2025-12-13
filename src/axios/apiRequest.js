@@ -1,4 +1,14 @@
-import api from "./axios.interceptor";
+/**
+ * API Request Wrapper - Now with Dual Backend Support!
+ *
+ * This module automatically routes requests to the correct backend:
+ * - Server 1: User & Property Management
+ * - Server 2: Payments, Admin & Media
+ *
+ * No changes needed in your components - routing happens automatically!
+ */
+
+import smartApi from "./dualBackendApi";
 
 const handle401Error = (error) => {
     console.warn('API Authentication error 401');
@@ -7,7 +17,7 @@ const handle401Error = (error) => {
 
 export async function LoginRequest(url, request) {
     try {
-        const res = await api(url, request)
+        const res = await smartApi.post(url, request)
         return res
     } catch (error) {
         return error
@@ -16,7 +26,7 @@ export async function LoginRequest(url, request) {
 
 export async function ApiPutRequest(url, request) {
     try {
-        const res = await api.put(url, request)
+        const res = await smartApi.put(url, request)
         return res
     } catch (error) {
         if (error.response && error.response.status == 401) {
@@ -29,7 +39,7 @@ export async function ApiPutRequest(url, request) {
 
 export async function ApiPostRequest(url, request) {
     try {
-        const res = await api.post(url, request)
+        const res = await smartApi.post(url, request)
         return res
     } catch (error) {
         if (error.response && error.response.status == 401) {
@@ -42,7 +52,7 @@ export async function ApiPostRequest(url, request) {
 
 export async function ApiDeleteRequest(url) {
     try {
-        const res = await api.delete(url)
+        const res = await smartApi.delete(url)
         return res
     } catch (error) {
         if (error.response && error.response.status == 401) {
@@ -55,7 +65,7 @@ export async function ApiDeleteRequest(url) {
 
 export async function ApiFetchRequest(url) {
     try {
-        const res = await api.get(url);
+        const res = await smartApi.get(url);
         return res;
     } catch (error) {
         if (error.response && error.response.status == 401) {
@@ -65,3 +75,7 @@ export async function ApiFetchRequest(url) {
         }
     }
 }
+
+// Export smartApi for direct use if needed
+export { smartApi };
+export default smartApi;
